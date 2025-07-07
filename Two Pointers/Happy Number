@@ -1,3 +1,5 @@
+//check the leetcode prem git for explanation , the time complexity of this code requires understanding
+
 class Solution:
     def isHappy(self, n: int) -> bool:
          
