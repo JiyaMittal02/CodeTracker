@@ -1,4 +1,8 @@
 #In this q it is important to underatand that we need the COMMON elements , and comparison of elements was the key point in completing this code
+# Using .sort() with reassignment (nums = nums.sort() returns None)
+
+
+
 
 class Solution:
     def intersect(self, nums1: List[int], nums2: List[int]) -> List[int]:
