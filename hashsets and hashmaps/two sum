@@ -1,0 +1,15 @@
+class Solution:
+    def twoSum(self, nums: List[int], target: int) -> List[int]:
+        d={}
+        for i,k in enumerate(nums):
+            complement=target-k
+            if complement in d:
+                return d[complement],i
+            d[k]=i
+        return []
+
+         
+         
+
+
+ 
