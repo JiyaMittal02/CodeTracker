@@ -1,5 +1,5 @@
 //check the leetcode prem git for explanation , the time complexity of this code requires understanding
-
+// if a number is not happy it will always get stuck in a loop
 class Solution:
     def isHappy(self, n: int) -> bool:
          
