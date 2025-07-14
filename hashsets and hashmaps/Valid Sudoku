@@ -1,0 +1,59 @@
+##A.Approach1 
+In this approach the time complexity is O(1) eventhough nested loops are used but complexity is so because the number of operations/traversals being done are fixed 
+they will happen for a fixd amount of time -- 9
+If it was n then the complexity would have been O(n2) since we dont know how big n can be
+ 
+def isValidSudoku(self, board: List[List[str]]) -> bool:
+    # Check rows
+    for i in range(9):
+        s = set()
+        for j in range(9):
+            item = board[i][j]
+            if item in s:
+                return False
+            elif item != '.':
+                s.add(item)
+
+    # Check columns
+    for i in range(9):
+        s = set()
+        for j in range(9):
+            item = board[j][i]
+            if item in s:
+                return False
+            elif item != '.':
+                s.add(item)
+
+    # Check 3x3 subgrids
+    for gridrow in range(0, 9, 3):
+        for gridcol in range(0, 9, 3):
+            s = set()
+            for i in range(3):
+                for j in range(3):
+                    item = board[gridrow + i][gridcol + j]
+                    if item in s:
+                        return False
+                    elif item != '.':
+                        s.add(item)
+
+    return True
+
+
+
+##B. SHORTER CODE APPROACH
+
+class Solution:
+    def isValidSudoku(self, board: List[List[str]]) -> bool:
+        board_range = [0,1,2,3,4,5,6,7,8]
+        dupes = []
+
+        for row in board_range:
+            for col in board_range:
+                num = board[row][col]
+
+                if num == '.':
+                    continue
+                
+                dupes += [(num, row), (col, num), (row//3, col//3, num)]
+        
+        return len(dupes) == len(set(dupes))
