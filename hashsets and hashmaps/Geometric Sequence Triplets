@@ -1,0 +1,16 @@
+
+BRUTE FORCE APPROACH -- In this approach we use three loops to check for the condition a,ar,ar2,ar3 and so on.....
+from typing import List
+
+def geometric_sequence_triplets(nums: List[int], r: int) -> int:
+    #brute force approach
+    count=0
+    for i in range(len(nums)):
+
+        for j in range(i+1,len(nums)):
+
+            if nums[j]==nums[i]*r:
+                for k in range(j+1,len(nums)):
+                    if nums[k]==nums[j]*r:
+                        count+=1
+    return count
