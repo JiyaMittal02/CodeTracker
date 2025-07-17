@@ -1,5 +1,9 @@
-
+IN THIS Q THE ELEMENTS FORM A GP- a,ar,ar2,ar3
 BRUTE FORCE APPROACH -- In this approach we use three loops to check for the condition a,ar,ar2,ar3 and so on.....
+--- In this approach there was no need of maintaining a nested list to count how many triplets we would get , a simple count variable helped in doing so , perform dry 
+run if doubtful
+
+
 from typing import List
 
 def geometric_sequence_triplets(nums: List[int], r: int) -> int:
@@ -14,3 +18,42 @@ def geometric_sequence_triplets(nums: List[int], r: int) -> int:
                     if nums[k]==nums[j]*r:
                         count+=1
     return count
+
+
+---OPTIMIZED APPROACH (USE A HASHMAP/DICTIONARY)
+     # maintaining a before and an after maps that track what i have already seen and what i will see so after will
+      initially have all eelements that we need to see
+    # we use a//r,a%r,a*r to see if an element can be the middle of a triplet GP
+
+ # Complete the countTriplets function below.
+def countTriplets(arr, r):
+    count = 0
+    bef = {}  # stores counts of numbers before current
+    aft = {}  # stores counts of numbers after current
+
+    # Initialize aft dictionary with frequency of each number
+    for v in arr:
+        if v in aft:
+            aft[v] += 1
+        else:
+            aft[v] = 1
+
+    # Loop through array to find valid triplets
+    for v in arr:
+        aft[v] -= 1  # current number is no longer in "after"
+
+        # Check if v can be the middle element of a triplet
+        if v % r == 0 and (v // r) in bef and (v * r) in aft:
+            count += bef[v // r] * aft[v * r]      # HERE WE DO THIS TO CONSIDER ALL POSSIBLE COMBINATIONS LETS SAY U HAVE 2 SHIRTS AND 3 PANTS
+                                                     NUMBER OF COMBINATIONS YOU CAN CREATE ARE 2*3 THAT IS 6
+
+        # Move current number to "before"
+        if v in bef:
+            bef[v] += 1
+        else:
+            bef[v] = 1
+
+    return count
+
+
+
