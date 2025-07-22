@@ -21,7 +21,7 @@ class Solution:
             curr=nex
         head=prev
         return head
-
+TC-O(N), SC-O(1)
 
 ##RECURSION APPROACH---
 # Definition for singly-linked list.
@@ -34,11 +34,11 @@ class Solution:
         if (not head) or (not head.next):
             return head
         newhead=self.reverseList(head.next) #inside the class SELF keyword is important
-        head.next.next=head
+        head.next.next=head   # head=3 so head.next is 4 although 4.next should be none but we reverse it by saying head.next.next=head , 4 points at 3
         head.next=None
-        return newhead
+        return newhead #because head is always one step behind the newhead,hence newhead is the one that is the actual head of the reversed list
 
-        
+        TC-O(N),SC-O(N) [because of stack space taken up by recursive call stack that equals to n calls]
 
 
 
