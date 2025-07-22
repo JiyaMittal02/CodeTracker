@@ -1,3 +1,9 @@
+#BRUTE FORCE--- CONVERT TO ARRAY REVERSE IT AND THEN AGAIN BACK TO LL
+#OPTIMIZED --- USE THREE POINTERS TO KEEP TRACK AND PERFORM REVERSAL IN A SINGLE PASS
+
+
+
+
 # Definition for singly-linked list.
 # class ListNode:
 #     def __init__(self, val=0, next=None):
