@@ -1,8 +1,8 @@
+THERE EXISTS TOTAL OF THREE APPROACHES FOR THIS QUESTION
 #BRUTE FORCE--- CONVERT TO ARRAY REVERSE IT AND THEN AGAIN BACK TO LL
-#OPTIMIZED --- USE THREE POINTERS TO KEEP TRACK AND PERFORM REVERSAL IN A SINGLE PASS
 
 
-
+##OPTIMIZED --- USE THREE POINTERS TO KEEP TRACK AND PERFORM REVERSAL IN A SINGLE PASS
 
 # Definition for singly-linked list.
 # class ListNode:
@@ -21,4 +21,25 @@ class Solution:
             curr=nex
         head=prev
         return head
+
+
+##RECURSION APPROACH---
+# Definition for singly-linked list.
+# class ListNode:
+#     def __init__(self, val=0, next=None):
+#         self.val = val
+#         self.next = next
+class Solution:
+    def reverseList(self, head: Optional[ListNode]) -> Optional[ListNode]:
+        if (not head) or (not head.next):
+            return head
+        newhead=self.reverseList(head.next) #inside the class SELF keyword is important
+        head.next.next=head
+        head.next=None
+        return newhead
+
+        
+
+
+
         
