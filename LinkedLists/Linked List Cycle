@@ -1,0 +1,54 @@
+
+**OPTIMIZED APPROACH-- FLOYD WARSHALL ALGO(TORTOISE AND HARE ALGO)
+Floyd’s Cycle Detection Algorithm — also called the Tortoise and Hare algorithm — is a classic and efficient way to detect a cycle in a linked list or 
+any sequence-like structure.
+ 🔍 The Problem
+Given a linked list, determine if it has a cycle — that is, some node’s next pointer points back to a previous node.
+
+🧠 Core Idea
+Use two pointers:
+Slow (tortoise) moves 1 step at a time
+Fast (hare) moves 2 steps at a time
+
+🎯 The 2-Step Move is a sweet spot:
+It's fast enough to guarantee a catch-up
+It avoids overshooting the slow pointer
+It keeps the logic and conditions simple and safe
+
+✅ If there's a cycle:The fast pointer will eventually "lap" the slow pointer — they’ll meet inside the cycle.
+
+❌ If there's no cycle:The fast pointer will hit None and the loop ends.
+
+*CODE:---
+# Definition for singly-linked list.
+# class ListNode:
+#     def __init__(self, x):
+#         self.val = x
+#         self.next = None
+
+class Solution:
+    def hasCycle(self, head: Optional[ListNode]) -> bool:
+         
+        slow=head
+        fast=head
+     
+        while fast!=None and fast.next!=None:
+            slow=slow.next
+            fast=fast.next.next
+            
+            if slow==fast:
+                return True
+        return False
+         
+
+*BRUTE FORCE- maintain a hashset
+class Solution:
+    def hasCycle(self, head: Optional[ListNode]) -> bool:
+        visited = set()
+        current = head
+        while current:
+            if current in visited:
+                return True
+            visited.add(current)
+            current = current.next
+        return False
