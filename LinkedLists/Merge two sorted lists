@@ -1,0 +1,86 @@
+## BRUTE FORCE -- O(m+n)
+Your Brute-Force Approach Summary:
+ 
+1. Extract values from both linked lists: O(m + n)
+2. Merge and sort the values: O((m + n) log(m + n))
+3. Reconstruct the linked list from sorted values: O(m + n)
+🔸 Time Complexity:
+Not O(m + n) due to the .sort() step.
+
+Sorting takes O((m + n) log(m + n)), which is worse than linear.
+
+🔸 Space Complexity:
+You're using extra space:
+
+l1, l2, l3: → O(m + n)
+
+Plus creating new ListNode objects
+
+CODE-----
+# Definition for singly-linked list.
+# class ListNode:
+#     def __init__(self, val=0, next=None):
+#         self.val = val
+#         self.next = next
+class Solution:
+    def convertoll(self,l3):
+        if not l3:
+            return None
+        head=ListNode(l3[0])
+        dummy=head
+        for value in l3[1:]:
+            dummy.next=ListNode(value)
+            dummy=dummy.next
+        return head
+    def mergeTwoLists(self, list1: Optional[ListNode], list2: Optional[ListNode]) -> Optional[ListNode]:
+        dummy1=list1
+        dummy2=list2
+        
+        l1=[]
+        l2=[]
+        while dummy1:
+            l1.append(dummy1.val)
+            dummy1=dummy1.next
+        while dummy2:
+            l2.append(dummy2.val)
+            dummy2=dummy2.next
+        l3=l1+l2
+        l3.sort()
+        return self.convertoll(l3)
+        
+## OPTIMIZED -- 2 PTR AND ON THE SPOT COMPARISON 
+
+         In-Place Merge Approach Summary:
+ 
+1. Walk through both linked lists using two pointers
+2. Build the result list by re-linking existing nodes (no sorting or list conversion)
+🔸 Time Complexity:
+O(m + n) — true linear time with no sorting
+
+🔸 Space Complexity:
+O(1) extra space
+
+Just using a few pointers (dummy, temp) and reusing original nodes
+
+CODE-----
+# Definition for singly-linked list.
+# class ListNode:
+#     def __init__(self, val=0, next=None):
+#         self.val = val
+#         self.next = next
+class Solution:
+    def mergeTwoLists(self, list1: Optional[ListNode], list2: Optional[ListNode]) -> Optional[ListNode]:
+        dummyhead=ListNode()
+        temp=dummyhead
+        while list1 and list2:
+            if list1.val<list2.val:
+                temp.next=list1
+                list1=list1.next
+            else:
+                temp.next=list2
+                list2=list2.next
+            temp=temp.next
+        temp.next=list1 if list1 else list2
+        return dummyhead.next
+        
+        
