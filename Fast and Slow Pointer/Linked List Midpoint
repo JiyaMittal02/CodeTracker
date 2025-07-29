@@ -6,7 +6,8 @@
 class Solution:
     def middleNode(self, head: Optional[ListNode]) -> Optional[ListNode]:
         slow=fast=head
-        while fast and fast.next:
+        while fast and fast.next:   # this is used because for lists of odd length when fast.next is null slow reached middle but for lists of even length when
+                                     fast is null the slow reaches middle
             fast=fast.next.next
             slow=slow.next
         return slow
