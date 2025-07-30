@@ -1,11 +1,14 @@
+In this question we are using the concept of expanding from the center , lets say string is babad which is odd length we kind 
+of pick middle b and traverse left and right from there but only after picking the first two char that is b and a that is they are also checked only then we arrive at middle b and use s,i,i
+for even length we use s,i,i+1
 class Solution:
     def longestPalindrome(self, s: str)->str:
         res=""
         for i in range(len(s)):
-            temp=self.helper(s,i,i)
+            temp=self.helper(s,i,i) # for ODD
             if(len(temp)>len(res)):
                 res=temp
-            temp=self.helper(s,i,i+1)
+            temp=self.helper(s,i,i+1) # for EVEN
             if(len(temp)>len(res)):
                 res=temp
         return res
@@ -15,3 +18,18 @@ class Solution:
             r+=1
         return s[l+1:r]
         
+EVEN will fail for odd and vice versa so no overlapping or calculation of wrong results
+
+🔍 Time Complexity:
+The main loop runs n times (where n = len(s)), and for each index, it calls helper() twice: once for odd-length palindromes and once for even-length.
+
+In the worst case, the helper() function can expand across the entire string (O(n) time) — for example, when the string is made of all identical characters like "aaaaaa".
+
+So overall:
+Each call to helper() takes O(n) in the worst case.
+
+There are 2 calls per character, so total is O(n) * 2n = O(n²).
+
+✅ Final Time Complexity: O(n²)
+✅ Space Complexity: O(1) (ignoring the output string, which is required anyway)
+Let me know if you’d like to see how this compares to other approaches (like Manacher’s algorithm at O(n)).
