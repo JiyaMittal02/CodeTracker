@@ -1,0 +1,7 @@
+Sliding window is a subset of two pointer pattern as it uses two pointers to define the bounds of a 'window' in iterable data structures
+It uses two pointers to define the bounds of a window in iterable data structures like arrays.Thw window defines a subcomponent of the data structure and it slides
+across the data structure unidirectionally
+there can be two types of sliding window--fixed,dynamic
+fixed is usually used when u wish to find a fixed length component whereas dynamic is used when we wish to adjust the length of the and find a subcomponent based
+on conditions
+
