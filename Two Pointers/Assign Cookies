@@ -1,3 +1,4 @@
+Here sorting both arrays initially reduces the time taken to make comparisons
 class Solution:
     def findContentChildren(self, g: List[int], s: List[int]) -> int:
         g.sort()
