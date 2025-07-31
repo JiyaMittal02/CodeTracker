@@ -1,0 +1,84 @@
+
+
+
+def substring_anagrams(s: str, t: str) -> int:
+
+    #edge case
+    if len(t)>len(s):
+        return 0
+    expected=[0]*26
+    calculated=[0]*26
+    for k in t:
+        expected[ord(k)-ord('a')]+=1
+    i=j=0
+    count=0
+    while j<len(s):
+        calculated[ord(s[j])-ord('a')]+=1
+        if j-i+1==len(t):
+            if expected==calculated:
+                count+=1
+            calculated[ord(s[i])-ord('a')]-=1
+            i+=1
+        j+=1
+    return count
+
+
+
+The `ord()` function in Python returns the **Unicode code point (i.e., integer representation)** of a single character.
+
+ ORD BASICALLY HELPS U TO FIND DISTANCE OF A CHARACTER FROM THE STARTING POINT LIKE IF I WANT THE POSITION OF ALPHABET C IN ABCD SEQUENCE THEN I CAN SIMPLY DO MINUS 
+ORD('C')-ORD('A') BECAUSE A IS STARTING POINT AND HAS AN ASCII OF 97 SO 100-97 WILL GIVE US 3 WHICH IS ITS POSITION IN THE ABCD SEQ
+### 🔹 Syntax:
+
+```python
+ord(character)
+```
+
+* `character`: A string of length **1** (like `'a'`, `'A'`, `'1'`, `'@'`, etc.)
+ 
+### 🔹 Example:
+
+```python
+ord('a')  # ➝ 97
+ord('b')  # ➝ 98
+ord('A')  # ➝ 65
+ord('0')  # ➝ 48
+ 
+### 🔹 Why It’s Useful:
+
+You can use `ord()` to:
+
+* Map characters to **array indices** (especially useful in problems involving frequency arrays).
+* Do character arithmetic (like alphabetical shifts).
+* Convert characters for sorting or hashing.
+
+---
+
+### 🔹 Common Pattern in DSA:
+
+When working with only **lowercase English letters**, you often use:
+
+```python
+index = ord(char) - ord('a')
+```
+
+This maps:
+
+* `'a'` → 0
+* `'b'` → 1
+* ...
+* `'z'` → 25
+
+So you can store letter frequencies like:
+
+```python
+freq = [0] * 26
+freq[ord('c') - ord('a')] += 1
+```
+
+  
+Let me know if you want the reverse too — that’s `chr()`, which converts number → character.
+
+
+    
+     
