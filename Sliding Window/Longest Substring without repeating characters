@@ -1,3 +1,5 @@
+
+BRUTE
 class Solution:
     def lengthOfLongestSubstring(self, s: str) -> int:
          i=0
@@ -14,6 +16,20 @@ class Solution:
                 i+=1
          return maxlen
 
-
-     
+SLIDING WINDOW
+class Solution:
+    def lengthOfLongestSubstring(self, s: str) -> int:
+        left=right=0
+        maxlen=0
+        k=set()
+        while right<len(s):
+            while s[right] in k:
+                k.remove(s[left])
+                left+=1
+            maxlen=max(maxlen,right-left+1)
+            k.add(s[right])
+            right+=1
+        return maxlen
+         
+ONE MORE APPRAENTLY OPTIMIZED APPROACH MENTIONED IN THE BOOK     
    
