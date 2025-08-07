@@ -1,0 +1,25 @@
+n=int(input("Please enter the end term of the range : "))
+l1=[]
+for i in range(2,n+1):
+    flag_check=True
+    for j in range(2,int(i**0.5)+1):        
+        if i%j==0:
+            flag_check=False
+            break
+    if flag_check:
+        l1.append(i)
+print(l1)
+
+
+In this q we are only checking till half the range because this q is not ur typical prime think of it like this, I am checking whether every i in the range till nth is prime or not?
+so int(i**0.5) because if i check till sqrt of i then automatically we check for rest of the factors because the cycle starts to repeat after a certain point 
+0.5 means 1/2 and we know sqrt is rep by 1/2 , take 4 for instance it is 2^2  so 2 is 4^1/2 that is 2^2^1/2 
+SINCE WE CHECK TILL SQRT OF i in range of j so we are essentially avoiding the condition of i==j that fails our code
+if i%j that is it has factors other than itself and one then it is not prime and hence break out of loop and move onto the next i in line
+
+sqrt(i) is a TYPICAL OPTIMIZATION TECHNIQUE FOR THE PRIME NUMBER Q AS IT REDUCES THE NUMBERS WE NEED TO CHECK
+
+
+--The code will work even if u take the range of j as 2 to i the sqrt version is the optimized version
+
+--- please RECHECK THE TC ONCE :: O(nrootn)
