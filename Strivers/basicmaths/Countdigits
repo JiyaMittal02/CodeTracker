@@ -1,0 +1,10 @@
+counting digits
+x = int(input("Enter a number:"))
+count = 0
+while x >0:
+    temp = x % 10
+    x = x // 10   # if u write / it makes the whole code wrong
+    # just this simple thing if not understood can cause serious errors
+    count += 1
+
+print("Number of digits : ", count)
