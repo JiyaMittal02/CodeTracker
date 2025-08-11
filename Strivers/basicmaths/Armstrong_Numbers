@@ -1,0 +1,10 @@
+#Armstrong numbers are those numbers that are equal to sum of cubes of their individual digits
+class Solution:
+    def armstrongNumber (self, n):
+        copy=n
+        m=0
+        while copy>0:
+            temp=copy%10
+            m+=temp**3
+            copy=copy//10
+        return n==m
