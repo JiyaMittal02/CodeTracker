@@ -1,0 +1,16 @@
+class Solution:
+    def reverse(self, x: int) -> int:
+        check=x<0
+        x=abs(x)
+        temp=int(str(x)[::-1])
+        if check:
+            temp=-temp
+        if temp<-2**31 or temp>2**31-1:  #because it is the result that can go out of bounds not the original number
+            return 0
+        return temp
+    
+        
+         
+        
+
+        
