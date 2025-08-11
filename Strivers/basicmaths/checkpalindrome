@@ -1,0 +1,25 @@
+#using slicing
+if x<0:
+return False
+if str(x)==str(x)[::-1]:
+  return True
+
+#using two pointer
+class Solution:
+    def isPalindrome(self, x: int) -> bool:
+        if x<0:
+            return False
+        i=0
+        j=len(str(x))-1
+        temp=str(x)
+        while i<j:
+            if temp[i]==temp[j]:
+                i+=1
+                j-=1
+            else:
+                return False
+        return True
+#this q can also be solved by last digit extraction and calulating the sum using reverse
+       
+
+        
