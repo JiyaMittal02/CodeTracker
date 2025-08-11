@@ -1,0 +1,12 @@
+#gcd-- largest number that divides the number
+#finding gcd using euclidean
+a=int(input("Enter num1: "))
+b=int(input("Enter num2: "))
+
+
+while b!=0:
+
+    a,b=b,a%b
+
+
+print("GCD: ",a)
