@@ -1,0 +1,29 @@
+class Solution:
+    def searchInsert(self, nums:List[int],target: int)->int:
+        i=0
+        j=len(nums)-1
+        # the '=' below is important it ensures u dont miss the last element
+        check=False
+        while i<=j:
+            mid=(i+j)//2
+            if nums[mid]==target:
+                check=True
+                return mid
+            elif nums[mid]>target:
+                j=mid-1
+            else:
+                i=mid+1
+            
+        if not check:
+            nums.insert(i,target) # has the default behavior to insert at an index before the one u mention
+            return i
+
+
+IMPORTANT TAKEAWAYS:-
+a. When the element is not found then remember that i automatically ends up at the position where the element should be , do dry run if confused
+b. while i<=j , the = here plays an important role because it ensures we dont miss out on the very last element of the array
+c. The insert function has the default behavior of inserting at an index before or elt before the one u mention its syntax is : insert(index,element)
+
+
+
+O(logn)
