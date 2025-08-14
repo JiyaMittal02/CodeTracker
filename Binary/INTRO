@@ -1,0 +1,74 @@
+- Reduces ur tc by half from N to LOG N
+- Make sure the array is sorted beforehand 
+1. What It Is
+
+Binary search is a method to find an element in a sorted list by repeatedly cutting the search range in half.
+
+It’s like looking for a word in a dictionary:
+
+You open in the middle, see if the word is there.
+
+If it comes before, you search the left half.
+
+If it comes after, you search the right half.
+
+2. Requirements
+
+The data must be sorted in ascending or descending order (usually ascending).
+
+You must be able to access elements by index (like in a Python list).
+
+3. Steps (Ascending order)
+
+Start pointers: low at index 0, high at index len(list)-1.
+
+Find middle:
+
+mid = (low + high) // 2
+
+
+Compare:
+
+If list[mid] == target: found it!
+
+If target < list[mid]: search left half → high = mid - 1.
+
+If target > list[mid]: search right half → low = mid + 1.
+
+Repeat until low > high (not found).
+
+4. Time Complexity
+
+Each step cuts the search space in half.
+
+Time complexity: O(log n).
+
+Space complexity: O(1) (iterative version).
+
+5. Example
+
+List: [1, 3, 5, 7, 9], search for 7
+
+low	high	mid	value	Action
+0	4	2	5	7 > 5 → search right half
+3	4	3	7	Found!
+6. Python Example
+def binary_search(arr, target):
+    low, high = 0, len(arr) - 1
+    while low <= high:
+        mid = (low + high) // 2
+        if arr[mid] == target:
+            return mid
+        elif target < arr[mid]:
+            high = mid - 1
+        else:
+            low = mid + 1
+    return -1  # Not found
+
+7. Common Mistakes
+
+Using binary search on an unsorted list → wrong results.
+
+Using while low < high instead of while low <= high → may skip last check.
+
+Forgetting to update the correct pointer (low or high).
