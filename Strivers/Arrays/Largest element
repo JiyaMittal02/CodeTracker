@@ -1,0 +1,11 @@
+class Solution:
+    def largestElement(self, nums):
+        max_element=float('-inf')
+        if not nums: #handling empty list cases
+            return None
+        for i in nums:
+            if i>max_element:
+                max_element=i
+        return max_element
+
+        
