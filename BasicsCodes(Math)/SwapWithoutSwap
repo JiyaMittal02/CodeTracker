@@ -1,0 +1,8 @@
+a=int(input("Enter num 1 : "))
+b=int(input("Enter num 2 : "))
+summation=a+b
+b=summation-b
+a=summation-a
+print("After swapping ")
+print("Num1 : ",a)
+print("Num2 : ",b)
