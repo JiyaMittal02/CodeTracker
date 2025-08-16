@@ -1,0 +1,8 @@
+nums=[10,10,10]
+maximum=secondmax=float('-inf')
+for i in nums:
+    if i>maximum:
+        secondmax,maximum=maximum,i
+    elif maximum>i>secondmax:
+        secondmax=i
+print(secondmax if secondmax!=float('-inf') else -1)
