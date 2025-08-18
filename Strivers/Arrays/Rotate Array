@@ -1,0 +1,29 @@
+
+APPROACH 1
+class Solution:
+    def rotate(self, nums: List[int], k: int) -> None:
+
+        k=k%len(nums)
+        nums[:]=nums[-k:]+nums[:-k]
+TC-- O(N) (because copying take O(n) time as first we make copy 1 that is O(k) + and the other one is O(n-k) == O(k+n-k) gives O(n)
+SC-- O(N) because slicing creates a temporary list
+
+
+APPROACH 2 -- WITH SC==O(1)
+          class Solution:
+    def rotate(self, nums: List[int], k: int) -> None:
+        n = len(nums)
+        k %= n
+
+        def reverse(l, r):
+            while l < r:
+                nums[l], nums[r] = nums[r], nums[l]
+                l += 1
+                r -= 1
+
+        # reverse entire array
+        reverse(0, n-1)
+        # reverse first k
+        reverse(0, k-1)
+        # reverse remaining n-k
+        reverse(k, n-1)
