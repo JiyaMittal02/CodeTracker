@@ -53,3 +53,5 @@ You gather candies as you walk and keep a running total of candies you’ve coll
 
 If at some point your total is S, and earlier you had total S - k, then the candies you collected between those two moments must be exactly k.
 So: remember where each total first happened, and when you see total - k again, you found a subarray summing to k.
+
+
