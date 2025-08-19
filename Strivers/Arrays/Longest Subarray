@@ -1,0 +1,55 @@
+
+
+BRUTE FORCE - O(n3)
+
+
+nums=[10,5,2,7,1,9]
+k=15
+ 
+l1=[]
+for i in range(len(nums)):
+    current=0
+    for j in range(i,len(nums)):
+        current+=nums[j]
+        if current==k:
+            l1.append(nums[i:j])
+            j=i+1
+        elif current>k:
+            break
+longest=[]
+for sub in l1:
+    if len(sub)>len(longest):
+        longest=sub
+print("Longest : ",len(longest))
+
+
+
+
+
+
+OPTIMIZED APPROACH 1 - HASHMAP (O(N))
+nums=[10,5,2,7,1,9]
+k=15
+
+prefixsum=0
+d={0:-1}
+longest=0
+for i,num in enumerate(nums):
+    prefixsum+=num
+    if prefixsum-k in d:
+        longest=max(longest,i-d[prefixsum-k])
+    if prefixsum not in d:
+        d[prefixsum]=i
+print("Longest ",longest)
+
+
+Very simple idea (prefix sum = candy count)
+
+Imagine you walk along a row of boxes. Each box has some candies.
+
+nums = [10, 5, 2, 7, 1, 9] — box 0 has 10 candies, box 1 has 5, etc.
+
+You gather candies as you walk and keep a running total of candies you’ve collected so far. That running total is the prefix sum.
+
+If at some point your total is S, and earlier you had total S - k, then the candies you collected between those two moments must be exactly k.
+So: remember where each total first happened, and when you see total - k again, you found a subarray summing to k.
