@@ -1,0 +1,51 @@
+The Sort Colors problem (LeetCode 75) is the classic Dutch National Flag problem, proposed by Edsger Dijkstra.
+
+We are given three categories (0, 1, 2 → think Red, White, Blue).
+The task is to sort them in-place using three pointers (low, mid, high) in a single pass.
+That’s why the algorithm is called the Dutch National Flag Algorithm 🚩🇳🇱 — the three numbers represent the three colors of the Dutch flag.
+
+class Solution:
+    def sortColors(self, nums: List[int]) -> None:
+        
+        low=0
+        high=len(nums)-1
+        mid=0
+        while mid<=high:
+            if nums[mid]==0:
+                nums[low],nums[mid]=nums[mid],nums[low]
+                low+=1
+                mid+=1
+            elif nums[mid]==1:
+                mid+=1
+            elif nums[mid]==2:
+                nums[mid],nums[high]=nums[high],nums[mid]
+                 
+                high-=1
+
+IMPORTANT TAKEAWAYS:
+1. We don't increase mid when nums[mid]==2 because we aren't sure when we swap with nums[high] if we are going to get what element
+HIGH is the region which is unchecked it is the region that we don't know yet hence we don't increase mid
+But for Low when we check mid==0 we know that it will belong to left side only at  the start hence its safe to swap 
+keep in note that mid start from same pos as low hence we check everything beforehand subtly
+2. The loop will stop when mid>high not when mid==high that condition is still valid since according to our loop while mid<=high
+
+TC-O(N)
+                
+✅ Key Takeaways for Dutch National Flag Algorithm
+Why we don’t increment mid when nums[mid] == 2
+Because when we swap with nums[high], the element we bring into mid comes from the unchecked zone (between low and high).
+Since we don’t know if it’s a 0, 1, or 2, we must stay at the same mid index and check it in the next loop.
+But we do decrement high--, because we know the last position is now correctly filled with 2.
+Why it’s safe to increment mid when nums[mid] == 0
+At the start of the loop, mid is always within the unchecked zone.
+If nums[mid] == 0, swapping with nums[low] ensures that 0 gets placed at its correct position.
+Since low ≤ mid, after swapping, both low and mid positions are correctly classified.
+That’s why we safely do low++ and mid++.
+Loop condition (mid <= high)
+The loop continues as long as there’s at least one unchecked element (mid <= high).
+When mid > high, it means the whole array is partitioned into three regions and no unchecked elements remain. ✅
+Time & Space Complexity
+Time: O(N) (each element is checked at most once).
+Space: O(1) (in-place swaps, no extra storage).
+✨ So yes, your intuition is spot on. You’ve basically internalized the loop invariant principle that makes Dutch National Flag work!
+        
