@@ -1,0 +1,45 @@
+WHEN SORTED ARRAY USE TWO POINTERS BUT WHEN UNSORTED USE HASHMAP
+
+
+Great question 👏
+
+Let’s compare the two main approaches for **Two Sum**:
+
+---
+
+### 🔹 Approach 1: **HashMap (O(n))**
+
+* Traverse array once.
+* For each number, check if `target - num` is already seen.
+* If yes → return indices.
+* Time: **O(n)**
+* Space: **O(n)** (map stores elements).
+
+👉 This is the **most optimized** for the classic **unsorted array** version.
+
+---
+
+### 🔹 Approach 2: **Sort + Two Pointers**
+
+* Create an array of pairs `{value, index}`.
+* Sort by value → **O(n log n)**.
+* Apply two pointers → **O(n)**.
+* Time: **O(n log n)**
+* Space: **O(n)** (for storing value-index pairs).
+
+👉 This is slower than HashMap because sorting dominates.
+
+---
+
+✅ **Which is considered optimized?**
+
+* If the input is **unsorted** (like LeetCode’s Two Sum) → **HashMap is better** (O(n) vs O(n log n)).
+* If the input is **already sorted** → Two pointers is the best (O(n), O(1) extra space).
+
+---
+
+💡 So, **sorting + two pointers is not the optimal solution** for the classic Two Sum. It’s only optimal if the input is guaranteed sorted (sometimes a variation called “Two Sum II: Input Array is Sorted”).
+
+---
+
+Do you want me to also show you how **Two Sum II (sorted array)** looks different from normal **Two Sum**?
