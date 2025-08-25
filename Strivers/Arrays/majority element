@@ -1,0 +1,13 @@
+class Solution:
+    def majorityElement(self, nums: List[int]) -> int:
+        #approach 1 : use hashamap
+        # approach 2: maintain max count
+        d={}
+        
+        for i in range(len(nums)):
+            if nums[i] not in  d:
+                d[nums[i]]=1
+            else:
+                d[nums[i]]+=1
+        maxkey=max(d,key=d.get)
+        return maxkey
