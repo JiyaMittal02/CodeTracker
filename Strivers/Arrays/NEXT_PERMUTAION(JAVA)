@@ -1,0 +1,47 @@
+class Solution {
+    public void nextPermutation(int[] nums) 
+    {
+        boolean flag=false;
+        for(int i=nums.length-2;i>=0;i--)
+        {
+            if (nums[i]<nums[i+1])
+            {
+                for(int j=nums.length-1;j>i;j--)
+                {
+                    if(nums[j]>nums[i])
+                    {
+                        int temp=nums[j];
+                        nums[j]=nums[i];
+                        nums[i]=temp;
+                        break;
+                    }
+                }
+                for(int m=i+1,n=nums.length-1;m<n;m++,n--)
+                {
+                    int temp=nums[m];
+                    nums[m]=nums[n];
+                    nums[n]=temp;
+                    
+                }
+                flag=true;
+                break;
+
+            }
+        }
+        if(!flag)
+            {
+                for(int m=0,n=nums.length-1;m<n;m++,n--)
+                {
+                    int temp=nums[m];
+                    nums[m]=nums[n];
+                    nums[n]=temp;
+                    
+                }
+
+            }
+
+
+        }
+            
+        
+    }
