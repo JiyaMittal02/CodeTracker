@@ -4,3 +4,12 @@
 -- reverse, reversed, slicing are methods for reversal
 -- SET is part of unordered collections hence it does not ALLOW ACCESSING RANDOM ELEMENTS LIKE WE DO THROUGH LISTS s[0] not allowed
 -- SORTED converts every ds to list
+
+-- TC OF SOME INBUILT
+min, max, sum = O(n) on a collection.
+
+len = O(1).
+
+sorted = O(n log n).
+
+in = depends on container (list → O(n), set/dict → O(1)).
