@@ -1,0 +1,6 @@
+-- sort() returns None and does sorting in-place so writing set(nums.sort) gives error because machine sees it as set(None)
+-- sorted() another function that sorts and returns a new list
+-- If you wish to traverse backwards in a loop STEP is mandatory without it the code doesn't work
+-- reverse, reversed, slicing are methods for reversal
+-- SET is part of unordered collections hence it does not ALLOW ACCESSING RANDOM ELEMENTS LIKE WE DO THROUGH LISTS s[0] not allowed
+-- 
