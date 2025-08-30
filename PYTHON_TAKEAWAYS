@@ -3,4 +3,4 @@
 -- If you wish to traverse backwards in a loop STEP is mandatory without it the code doesn't work
 -- reverse, reversed, slicing are methods for reversal
 -- SET is part of unordered collections hence it does not ALLOW ACCESSING RANDOM ELEMENTS LIKE WE DO THROUGH LISTS s[0] not allowed
--- 
+-- SORTED converts every ds to list
