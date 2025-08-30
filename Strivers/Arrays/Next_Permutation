@@ -1,0 +1,34 @@
+class Solution:
+    def nextPermutation(self, nums: List[int]) -> None:
+        #if it is in descending order or basically in order where it is the highest
+        #permutation possible
+        flag=False
+        for i in range(len(nums)-2,-1,-1):
+            if nums[i]<nums[i+1]:
+                for j in range(len(nums)-1,i,-1):
+                    if nums[j]>nums[i]:
+                        nums[i],nums[j]=nums[j],nums[i]
+                        break
+                flag=True
+                nums[i+1:]=nums[i+1:][::-1]
+                break
+        if not flag:
+            nums.reverse()
+        
+  
+TAKEAWAYS:
+1. If u want to traverse backwards then need to use step=-1
+2. We assume that the righmost element we find will be just greater than our nums[i] because suffix is in descending order so we will get at right only
+3. We search where does our pattern break that is where does it become increasing then swap nums[i] with just largest and reverse suffix
+4. LEXOGRAPHICAL -- means dictionary order
+5. SLICING CREATES A TEMP LIST HENCE IT IS IMPORTANT TO REASSIGN BACK TO THE ORIGINAL LIST
+
+Why scan from the right?
+Think about [1,2,3].
+If we want the next bigger arrangement, the change must happen as far to the right as possible.
+If we change something on the left too early, we skip too many permutations.
+Example:
+
+Current = [1,2,3]
+If I change the leftmost 1 → swap with 3 → [3,2,1]. That jumps all the way to the end, skipping [1,3,2]. 
+So, we scan from the right to find the first place where we can make a minimal increase.
