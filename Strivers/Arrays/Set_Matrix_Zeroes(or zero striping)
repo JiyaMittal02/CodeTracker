@@ -1,0 +1,37 @@
+class Solution:
+    def setZeroes(self, matrix: List[List[int]]) -> None:
+        rowset=set()
+        colset=set()
+        totalrows=len(matrix)
+        totalcolumns=len(matrix[0])
+        for i in range(totalrows):
+            for j in range(totalcolumns):
+                if matrix[i][j]==0:
+                    rowset.add(i)
+                    colset.add(j)
+        for i in range(totalrows):
+            for j in range(totalcolumns):
+                if i in rowset or j in colset:
+                    matrix[i][j]=0
+            
+
+        
+         
+
+    TC -- O(M*N)
+     SC -- O(m+n)
+
+When would it be O(m + n)?
+
+If your algorithm only touched each row or each column once, not each cell.
+For example:
+
+Scan the first row (O(n))
+
+Scan the first column (O(m))
+
+Do some marking
+
+Update only rows and columns as a block
+
+That’s O(m + n) because you never looked at all m × n cells.
