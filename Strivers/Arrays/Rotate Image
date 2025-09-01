@@ -1,0 +1,15 @@
+class Solution:
+    def rotate(self, matrix: List[List[int]]) -> None:
+        """
+        Do not return anything, modify matrix in-place instead.
+        """
+        rowlength=len(matrix)
+        for i in range (rowlength):
+            for j in range(i+1,len(matrix)):
+                matrix[i][j],matrix[j][i]=matrix[j][i],matrix[i][j]  #used swapping of upper diagonal elements
+        for row in matrix:
+            row.reverse()
+        
+
+1. Transpose of upper right elements above diagonal
+2. Reverse each row
