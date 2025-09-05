@@ -1,0 +1,16 @@
+ nums.sort()
+        i=0
+        j=len(nums)-1
+        l1=[]
+        result=0
+        while i<=j:
+            result=nums[i]+nums[j]
+            if result<target:
+                i+=1
+            elif result>target:
+                j-=1
+            else:
+                l1.append(i)
+                l1.append(j)
+                return l1
+        return []
