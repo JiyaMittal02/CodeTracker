@@ -1,0 +1,33 @@
+nums=[0,-1,2,-3,1]
+nums.sort()
+fixed_elt=0
+l2=[]
+while fixed_elt<len(nums):
+    if fixed_elt>0 and nums[fixed_elt]==nums[fixed_elt-1]:
+        fixed_elt+=1
+        continue
+    current_num=nums[fixed_elt]
+    i=fixed_elt+1
+    j=len(nums)-1
+    target=-current_num
+
+    while i<=j:
+        result=nums[i]+nums[j]
+        if result<target:
+            i+=1
+        elif result>target:
+            j-=1
+        else:
+            l2.append([nums[i],nums[j],current_num])
+            while i<j and nums[i]==nums[i-1]:
+                i+=1
+            while i<j and nums[j]==nums[j-1]:
+                j-=1
+            i+=1
+            j-=1
+
+
+
+
+    fixed_elt+=1
+print(l2)
