@@ -13,3 +13,4 @@ len = O(1).
 sorted = O(n log n).
 
 in = depends on container (list → O(n), set/dict → O(1)).
+-- .extend() returns NONE
