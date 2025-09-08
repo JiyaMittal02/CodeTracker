@@ -1,0 +1,60 @@
+BRUTE FORCE USING A HASHMAP
+import math
+class Solution:
+    def majorityElement(self, nums: List[int]) -> List[int]:
+        d={}
+        
+        for i in nums:
+            if i not in d:
+                d[i]=1
+            else:
+                d[i]+=1
+        l1=[]
+        for k in d:
+            if d.get(k)>math.floor(len(nums)/3):
+                l1.append(k)
+        return l1
+                
+TC-O(N)
+SC-O(N)
+
+OPTIMIZED -- BOYER MOORE EXTENDED VOTING VERSION
+
+import math
+class Solution:
+    def majorityElement(self, nums: List[int]) -> List[int]:
+        #boyer moore extended voting version
+        #if an element is in majority it will survive the voting
+        cnt1,cnt2=0,0
+        elt1,elt2=float('-inf'),float('-inf')
+        for i in nums:
+            if cnt1==0 and elt2!=i:
+                cnt1=1
+                elt1=i
+            elif cnt2==0 and elt1!=i:
+                cnt2=1
+                elt2=i
+            elif i==elt1:
+                cnt1+=1
+            elif i==elt2:
+                cnt2+=1
+            else:
+                cnt1-=1
+                cnt2-=1
+        #now we know which elements are in majority
+        cnt1,cnt2=0,0
+        for i in nums:
+            if i==elt1:
+                cnt1+=1
+            if i==elt2:
+                cnt2+=1
+        threshold=math.floor(len(nums)/3)
+        l1=[]
+        if cnt1>threshold:
+            l1.append(elt1)
+        if cnt2>threshold:
+            l1.append(elt2)
+        return l1
+TC- O(N)
+SC- O(1)
+     
