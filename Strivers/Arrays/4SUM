@@ -1,0 +1,36 @@
+class Solution:
+    def fourSum(self, nums: List[int], target: int) -> List[List[int]]:
+        #the trick was to fix 2 elts and move 2 ptrs
+        l1=[]
+        nums.sort()
+        for i in range(len(nums)):
+            if i>0 and nums[i]==nums[i-1]:
+                continue
+            fixedelet=nums[i]
+            for j in range(i+1,len(nums)):
+                if j>i+1 and nums[j]==nums[j-1]:
+                    continue
+                k=j+1
+                n=len(nums)-1
+                while k<n:
+
+                    result=nums[i]+nums[j]+nums[k]+nums[n]
+                    if result==target:
+                        l1.append([nums[i],nums[j],nums[k],nums[n]])
+                        while k<n and nums[k]==nums[k+1]:
+                            k+=1
+                        while k<n and nums[n]==nums[n-1]:
+                            n-=1
+                        k+=1
+                        n-=1
+                    elif result<target:
+                        k+=1
+                    else:
+                        n-=1
+        return l1
+
+
+
+In this particular code we use the modified version of pair sum here we basically are fixing 2 elements and then using 2 pointers for completing the quadraplet
+HERE J>I+1 plays a major role for edge cases like [2,2,2,2]
+        
