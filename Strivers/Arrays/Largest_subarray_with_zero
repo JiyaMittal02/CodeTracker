@@ -1,0 +1,22 @@
+arr=[15,-2,2,-8,1,7,10,23]
+d={}
+i,j,k=0,0,0
+result=0
+maxlen,length=0,0
+while i<len(arr):
+    result+=arr[i]
+    if result==0:
+        maxlen=max(maxlen,i+1)
+    if result not in d:
+        d[result]=i
+
+    else:
+        length=i-d[result]
+
+    i+=1
+    maxlen=max(maxlen,length)
+print(maxlen)
+
+
+
+O(N) BOTH TC AND SC
