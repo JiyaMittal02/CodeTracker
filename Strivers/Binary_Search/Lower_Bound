@@ -1,0 +1,36 @@
+#BRUTE FORCE
+arr=[1,2,2,3]
+N=4
+x=2
+# finding lower bound
+#lower bound means arr[i]>=x the very first index
+
+for i in range(len(arr)):
+    if arr[i]>=x:
+        print(i)
+        break
+
+#same code doesnt work for sets because sets are
+# unordered and dont support indexing that is if arr was a set arr[i] isnt allowed
+# because sets arent subscriptable
+
+#OPTIMIZED BINARY -- LOGN
+
+arr=[1,2,2,3]
+N=4
+x=3
+# finding lower bound
+#lower bound means arr[i]>=x the very first index
+i=0
+j=len(arr)-1
+while i<=j:
+    mid=(i+j)//2
+    if arr[mid]>=x:
+        ans=mid
+        j=mid-1   #WE KEEP SEARCHING LEFT BECAUSE WE ARE LOOKING FOR THE LOWER BOUND
+
+    elif arr[mid]<x:
+        i=mid+1
+
+
+print(ans)
