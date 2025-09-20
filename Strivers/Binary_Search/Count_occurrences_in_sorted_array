@@ -1,0 +1,22 @@
+class Solution:
+    def countOccurrences(self, arr, target):
+        i, j = 0, len(arr) - 1
+        first = last = -1
+        
+        while i <= j:
+            mid = (i + j) // 2
+            if arr[mid] == target:
+                first = last = mid
+                while first > 0 and arr[first-1] == target:
+                    first -= 1
+                while last < len(arr)-1 and arr[last+1] == target:
+                    last += 1
+                break
+            elif arr[mid] < target:
+                i = mid + 1
+            else:
+                j = mid - 1
+        
+        if first == -1:  # not found
+            return 0
+        return (last - first + 1)
