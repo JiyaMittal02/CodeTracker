@@ -1,0 +1,82 @@
+APPROACH 1:
+ for i in range(len(nums)):
+       if i==target:
+           return True
+return False
+
+APPROACH 2:
+class Solution:
+    def search(self, nums: List[int], target: int) -> bool:
+        nums.sort()
+        i=0
+        j=len(nums)-1
+        while i<=j:
+            mid=(i+j)//2
+            if nums[mid]==target:
+                return True
+            elif nums[mid]<target:
+                i=mid+1
+            else:
+                j=mid-1
+        return False
+
+Sorting  causes the complexity to go to nlogn as sorting takes nlogn and while loop takes logn combined NLOGN 
+
+APPROACH 3:
+class Solution:
+    def search(self, nums: List[int], target: int) -> bool:
+        #what if we unrotate the array that saves us from .sort()?
+        temp=[]
+        for i in range(len(nums)-1):
+            if nums[i]>nums[i+1]:
+                j=i+1
+                temp=nums[j:]+nums[:j]
+                break
+        if not temp:
+            temp=nums
+        
+        i=0
+        j=len(nums)-1
+        while i<=j:
+            mid=(i+j)//2
+            if temp[mid]==target:
+                return True
+            elif temp[mid]<target:
+                i=mid+1
+            else:
+                j=mid-1
+        return False
+
+Still not optimized as  we are using SLICING that causes complexity to be O(n)
+
+
+APPROACH 4:(OPTIMIZED)
+key idea: we know one half will always be sorted of the array so why not identify that half and then search in that particular half only for our target
+
+class Solution:
+    def search(self, nums: List[int], target: int) -> bool:
+        i=0
+        j=len(nums)-1
+        while i<=j:
+            mid=(i+j)//2
+            #check  which halve is sorted
+            if nums[mid]==target:
+                return True
+            if nums[i]==nums[mid]==nums[j]:   #skipping dupes
+                i+=1
+                j-=1
+
+            elif nums[i]<=nums[mid]:
+                if nums[i]<=target<nums[mid]:
+                    j=mid-1
+                else:
+                    i=mid+1
+            else:
+                if nums[mid]<target<=nums[j]:
+                    i=mid+1
+                else:
+                    j=mid-1
+        return False
+
+
+logn achieved
