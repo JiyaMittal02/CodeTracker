@@ -5,8 +5,8 @@ class Solution:
         while i<j:
             mid=(i+j)//2
          
-            if nums[mid]>nums[j]:
+            if nums[mid]>nums[j]:   #if so then right half is where answer lies
                 i=mid+1
             else:
-                j=mid
+                j=mid    # not mid-1 to keep in check the condition that mid can also be the potential answer
         return nums[i]
