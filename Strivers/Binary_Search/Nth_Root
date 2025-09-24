@@ -1,0 +1,16 @@
+class Solution:
+    def NthRoot(self, n, m):
+        if m==0 or m==1:
+            return m
+        i=0
+        j=m//2
+        while i<=j:
+            mid=(i+j)//2
+            if mid**n==m:
+                return mid
+            elif mid**n>m:
+                j=mid-1
+            else:
+                i=mid+1
+        return -1
+      
