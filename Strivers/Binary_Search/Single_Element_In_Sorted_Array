@@ -1,3 +1,9 @@
+
+MAIN TRICK: The main idea that led to being this q different was the use of XOR . XOR on odd element with 1 will tell us that its pair is at index-1 
+whereas for even its at index+1  so we use this condition for selecting which half has our answer
+
+This q is best understood through a dry run
+
 class Solution:
 def singleNonDuplicate(self, nums: List[int]) -> int:
         #if mid index is even it means that element already occurred before
