@@ -1,0 +1,64 @@
+class Solution:
+def singleNonDuplicate(self, nums: List[int]) -> int:
+        #if mid index is even it means that element already occurred before
+        #if index is odd then element still needs to come later
+        i=0
+        j=len(nums)-1
+        while i<j:
+            mid=(i+j)//2
+            if nums[mid]==nums[mid^1]:
+                i=mid+1
+            else:
+                j=mid
+        return nums[i]
+
+
+
+1. Binary Search
+Efficient way to search in a sorted array.
+Reduces time complexity from O(n) to O(log n).
+Key idea: repeatedly split the search space in half (i to j).
+
+🔹 2. Mid Calculation
+mid = (i + j) // 2
+(i+j)//2 gives the middle index.
+In binary search, mid is used to decide which half to continue searching.
+Watch for integer division in Python (//).
+
+🔹 3. XOR Trick (mid ^ 1)
+XOR flips the last bit of mid.
+If mid is even → mid ^ 1 = mid + 1 (next index, the pair)
+If mid is odd → mid ^ 1 = mid - 1 (previous index, the pair)
+Purpose: efficiently find the expected pair index without using if-else.
+Helps decide which side of the array the single element lies on.
+
+🔹 4. Pair Property in Sorted Array
+All elements appear exactly twice, except one single element.
+Before single element → pairs are (even, odd)
+After single element → pairs are (odd, even) (shift happens)
+Checking nums[mid] == nums[mid ^ 1] tells whether the single element is left or right.
+
+🔹 5. Binary Search Bounds
+while i < j:
+    j = mid   # not mid-1
+i < j stops when search space is one element.
+j = mid keeps mid in the search space because mid might itself be the single element.
+
+🔹 6. Time Complexity
+Binary search reduces search space by half each time → O(log n).
+Checking pair with XOR → O(1) per iteration.
+Overall → O(log n) time, O(1) space.
+
+🔹 7. Space Complexity
+Constant extra space (i, j, mid) → O(1).
+
+🔹 8. Edge Cases
+Single element at start → nums[0]
+Single element at end → nums[-1]
+The code handles these automatically because i and j converge correctly.
+
+✅ Summary (Intuition)
+The array is split into halves using binary search.
+XOR finds the “expected pair” index.
+Compare with the pair to decide left or right search.
+Converge to the single element in logarithmic time.
