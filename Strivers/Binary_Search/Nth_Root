@@ -3,7 +3,7 @@ class Solution:
         if m==0 or m==1:
             return m
         i=0
-        j=m//2
+        j=m//2   # it is preferred to take j=m for preventing errors on certain edge cases
         while i<=j:
             mid=(i+j)//2
             if mid**n==m:
