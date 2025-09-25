@@ -1,0 +1,38 @@
+import math
+class Solution:
+    def minEatingSpeed(self, piles: List[int], h: int) -> int:
+        #koko eating bananas
+        # minimum banana that koko can eat in any case==1 and maximum she can eat== max(piles)
+        # so brute force for this question would be for me to check the whole range from 1 to max and
+        #see which one satisifes the condition <=h 
+        #but using binary search if a mid satisfies then i can say ok this value works so lets try lower values 
+        #than this becuase our goal is to find the minimum 
+        # remember we are not talking about the array piles for the boundary manipulation but rather about the range 1 to max(piles)
+
+        i=1   #min number of bananas Koko can eat in any case
+        j=max(piles)  #max number of bananans koko can eat in a case
+
+        def checkhours(temp):
+            summation=0
+            for x in piles:
+                summation+=math.ceil(x/temp)   
+                # this summation is the calculation that checks if mid is the amount of
+                #bananas koko eats in an hour then will she be able to eat all piles in 
+                # h hours , if she can then we will return that mid as true if she cant
+                # then we know that this isnt our answer
+            return summation<=h
+        
+        while i<=j:
+            mid=(i+j)//2
+            if checkhours(mid):
+                j=mid-1
+            else:
+                i=mid+1
+        return i
+
+        # our target was to tell about k which is the minimum speed that koko
+        # must have in order to finish eating all the piles but at the minimum speed
+
+
+TC -- Nlogm
+where N is the time taken by checkhours function to loop over pile n times for each candidate and logm is the tc of binary search
