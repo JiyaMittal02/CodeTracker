@@ -1,0 +1,27 @@
+class Solution:
+    def minDays(self, bloomDay: List[int], m: int, k: int) -> int:
+        if m*k>len(bloomDay):
+            return -1
+        if m*k==len(bloomDay):
+            return max(bloomDay)
+        i=1
+        j=max(bloomDay)
+        while i<j:
+            flowercount=0
+            bouqetcount=0
+            mid=(i+j)//2
+            for flo in bloomDay:
+                if flo<=mid:
+                    flowercount+=1
+                    if flowercount==k:
+                        bouqetcount+=1
+                        flowercount=0
+                else:
+                    flowercount=0
+            if bouqetcount<m:
+                i=mid+1
+            else:
+                j=mid
+        return i
+
+        
