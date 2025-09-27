@@ -1,0 +1,58 @@
+NUMPY APPROACH 
+
+
+import numpy as np
+class Solution:
+    def searchMatrix(self, matrix: List[List[int]], target: int) -> bool:
+        arr=np.ravel(matrix)
+        i=0
+        j=len(arr)-1
+        while i<=j:
+            mid=(i+j)//2
+            if arr[mid]==target:
+                return True
+            elif arr[mid]<target:
+                i=mid+1
+            else:
+                j=mid-1
+        return False
+
+
+
+
+FORMULA BASED APPROACH
+class Solution:
+    def searchMatrix(self, matrix: List[List[int]], target: int) -> bool:
+        # index/rownum==rowindex
+        # index%colnum==colindex
+
+        j=((len(matrix)*len(matrix[0]))-1)
+        i=0
+        
+        while i<=j:
+            mid=(i+j)//2
+            rowindex=mid//len(matrix[0])
+            colindex=mid%len(matrix[0])     
+            if matrix[rowindex][colindex]==target:
+                return True
+            elif matrix[rowindex][colindex]<target:
+                i=mid+1
+            else:
+                j=mid-1
+        return False
+
+
+REASON FOR DIVIDING BY NUM OF ROWS BOTH THE TIMES IS BECAUSE --- 
+Row (// cols) → "How many complete rows have I finished?"
+Column (% cols) → "After finishing those rows, where exactly am I inside the current row?"
+
+So your summary is perfect:
+
+Rows (// cols) → out of total, what fraction (how many full rows) are done.
+
+Cols (% cols) → how many remaining after those full rows.
+
+
+
+
+TC -- O(logm*n)
