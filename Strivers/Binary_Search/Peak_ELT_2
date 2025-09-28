@@ -1,0 +1,27 @@
+class Solution:
+    def findPeakGrid(self, mat: List[List[int]]) -> List[int]:
+        r=len(mat)
+        c=len(mat[0])
+        i=0
+        j=c-1
+        while i<=j:
+            mid=(i+j)//2
+            row=0
+            for k in range(r):
+                if mat[k][mid]>mat[row][mid]:
+                    row=k
+            if mid-1>=0:
+                leftval=mat[row][mid-1]
+            else:
+                leftval=-1
+            if mid+1<c:
+                rightval=mat[row][mid+1]
+            else:
+                rightval=-1
+            if mat[row][mid]<leftval:
+                j=mid-1
+            elif mat[row][mid]>leftval and mat[row][mid]>rightval:
+                return [row,mid]
+            else:
+                i=mid+1
+                
