@@ -1,0 +1,21 @@
+class Solution:
+    def removeOuterParentheses(self, s: str) -> str:
+        i=0
+        j=0
+        left_count=0
+        right_count=0
+        ans=""
+        for j in range(len(s)):
+           
+            if s[j]=="(":
+                left_count+=1
+            elif s[j]==")":
+                right_count+=1
+            if left_count==right_count:
+                ans+=s[i+1:j]
+                i=j+1
+                left_count=0
+                right_count=0
+        return ans
+
+        
