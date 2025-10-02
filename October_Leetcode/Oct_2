@@ -1,0 +1,15 @@
+class Solution:
+    def maxBottlesDrunk(self, numBottles: int, numExchange: int) -> int:
+        max_bottles=numBottles
+        while numBottles>=numExchange:    #imp condition
+            numBottles-=numExchange
+            numBottles+=1    # 1 new bottle obtained after exchanging 1 batch at a time
+            max_bottles+=1
+            numExchange+=1
+        return max_bottles
+
+
+
+WATER BOTTLE 2
+
+TC- O(numbottles+numexcahnge)
