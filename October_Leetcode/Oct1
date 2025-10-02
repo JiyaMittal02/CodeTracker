@@ -1,0 +1,15 @@
+class Solution:
+    def numWaterBottles(self, numBottles: int, numExchange: int) -> int:
+        max_bottle=numBottles
+        
+        while numBottles>=numExchange:                 # for cases where numBottles becomes equal to numExchange
+            max_bottle+=numBottles//numExchange
+            remaining_Empty_Bottles=numBottles%numExchange
+            remaining_Empty_Bottles+=(numBottles//numExchange)
+            numBottles=remaining_Empty_Bottles
+        return max_bottle
+
+O(logn) because we are reducing numbottles by halfing it each time
+since reduction is not linear that is why tc is logn otherwise if it was by some fixed value using subtraction tc would have been O(n)
+
+        
