@@ -1,0 +1,17 @@
+class Solution:
+    def largestOddNumber(self, num: str) -> str:
+        l1=[]
+        i=0
+        k=0
+        for i in num:
+            if int(i)%2!=0:
+                l1.append(k)
+            k+=1
+        if not l1:
+            return ""
+        else:
+            return num[:max(l1)+1]
+
+  brute force uper waala
+
+optimized neeche waala
