@@ -8,3 +8,28 @@ while x >0:
     count += 1
 
 print("Number of digits : ", count)
+
+
+
+
+JAVA CODE
+class Solution {
+    public int countDigit(int n)
+    { 
+        if(n==0) return 1;    //edge case we might miss
+        int count=0;
+        while(n>0)
+        {
+            n=n/10;
+            count+=1;
+
+        }
+        return count;
+
+    }
+}
+
+
+TC : since number gets divided by 10 every iteration so we need to take that into account hence tc becomes : O(logn)
+10ᵏ ≈ n
+k = log₁₀(n)
