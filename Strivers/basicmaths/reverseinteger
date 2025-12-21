@@ -10,7 +10,50 @@ class Solution:
         return temp
     
         
-         
+
+JAVA
+
+class Solution {
+    public int reverse(int x)
+    {
+        //reversing an integer , edge case : negative number , 0 
+        //counting digits
         
+    int result = 0;
+
+    while (x != 0)
+    {
+        int tail = x % 10;
+        int newResult = result * 10 + tail;
+        if ((newResult - tail) / 10 != result)          //VERY IMPORTANT SAVES FROM HARDCODING THE OVERFLOW CONDITIONS
+        { return 0; }
+        result = newResult;
+        x = x / 10;
+    }
+
+    return result;
+
+    }
+}
+ Java doesnt throw overflow error instead it wraps around i.e
+Because in Java:
+
+int overflow does NOT throw an error
+
+It silently wraps around → dangerous
+
+public class three 
+{
+	public static void main(String[] args) 
+	{
+		int a=Integer.MIN_VALUE;
+		System.out.println(a-1);
+		int b=Integer.MAX_VALUE;
+		System.out.println(b+1);
+	}
+}
+output : 2147483647
+-2147483648
+
 
         
